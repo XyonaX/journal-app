@@ -18,15 +18,17 @@ import {
 } from '../../store/auth';
 import { useMemo } from 'react';
 
+const formData = {
+	email: '',
+	password: '',
+};
+
 export const LoginPage = () => {
 	const { status, errorMessage } = useSelector((state) => state.auth);
 
 	const dispatch = useDispatch();
 
-	const { email, password, onInputChange } = useForm({
-		email: 'jonatan.vargasportillo@gmail.com',
-		password: '123456',
-	});
+	const { email, password, onInputChange } = useForm(formData);
 
 	const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
@@ -42,7 +44,7 @@ export const LoginPage = () => {
 
 	return (
 		<AuthLayout title="Login">
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className="animate__animated animate__fadeIn  ">
 				<Grid container>
 					<Grid item xs={12} sx={{ mt: 2 }}>
 						<TextField
@@ -66,8 +68,12 @@ export const LoginPage = () => {
 							onChange={onInputChange}
 						/>
 
-						<Grid container>
-							<Grid item xs={12} display={!errorMessage ? 'none' : ''}>
+						<Grid
+							container
+							display={!errorMessage ? 'none' : ''}
+							sx={{ mt: 1 }}
+						>
+							<Grid item xs={12}>
 								<Alert severity="error">{errorMessage}</Alert>
 							</Grid>
 						</Grid>

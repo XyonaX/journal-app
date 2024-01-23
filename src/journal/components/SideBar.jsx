@@ -1,20 +1,11 @@
-import { TurnedInNot } from '@mui/icons-material';
-import {
-	Box,
-	Divider,
-	Drawer,
-	Grid,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	Toolbar,
-	Typography,
-} from '@mui/material';
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { SideBarItem } from './SideBarItem';
 
 export const SideBar = ({ drawerWidth = 240 }) => {
+	const { displayName } = useSelector((state) => state.auth);
+	const { notes } = useSelector((state) => state.journal);
 	return (
 		<Box
 			component="nav"
@@ -33,32 +24,14 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 			>
 				<Toolbar sx={{ backgroundColor: 'primary.main', color: 'white' }}>
 					<Typography variant="h6" noWrap component="div">
-						John Doe
+						{displayName}
 					</Typography>
 				</Toolbar>
 				<Divider />
 
 				<List>
-					{['Enero', 'Febrero', 'Marzo', 'Abril'].map((text) => (
-						<ListItem key={text} disablePadding>
-							<ListItemButton>
-								<ListItemIcon>
-									<TurnedInNot />
-								</ListItemIcon>
-								<Grid container>
-									<ListItemText
-										primary={text}
-										sx={{ color: 'parrafos.white' }} // Aplica el color blanco al texto principal
-									/>
-									<ListItemText
-										secondary={
-											"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-										}
-										sx={{ color: 'parrafos.main' }} // Aplica el color blanco al texto secundario (Lorem Ipsum)
-									/>
-								</Grid>
-							</ListItemButton>
-						</ListItem>
+					{notes.map((note) => (
+						<SideBarItem key={note.id} {...note} />
 					))}
 				</List>
 			</Drawer>
