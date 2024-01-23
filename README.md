@@ -1,8 +1,21 @@
-# React + Vite
+# Journal App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Journal App es una aplicación web que te permite llevar un diario personal donde puedes registrar tus experiencias diarias, anécdotas o cualquier cosa que desees compartir. Además, puedes subir imágenes para acompañar tus entradas y hacer que tus recuerdos sean más visualmente atractivos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías Utilizadas
+
+- React
+- Material-UI
+- Firebase (Autenticación y Almacenamiento de Datos)
+- Cloudinary (Almacenamiento de Imágenes)
+
+## Funcionalidades Principales
+
+- Crear nuevas entradas en tu diario.
+- Adjuntar imágenes a tus entradas.
+- Visualizar y editar entradas antiguas.
+- Autenticación de usuarios para mantener la privacidad.
+- Almacenamiento seguro de datos en Firebase.
+- Almacenamiento de imágenes en la nube mediante Cloudinary.
