@@ -48,7 +48,6 @@ describe('Pruebas en authSlice', () => {
 			authenticatedState,
 			logout({ errorMessage: errorMessage })
 		);
-		console.log(state);
 
 		expect(state).toEqual({
 			status: 'non-authenticated',
